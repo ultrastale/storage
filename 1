@@ -1,3 +1,31 @@
+// change project name to EvanTorgrimsonGuessingGame
+// refactor/rename
+
+/*
+* Evan Torgrimson
+* 07/06/15
+* This class creates a higher lower number guessing game
+* and will show statistics at the end if you quit the game
+*
+*
+*/
+
+
+/**
+* This class creates a higher lower number guessing game
+* and will show statistics at the end if you quit the game.
+*
+*
+* @author Evan Torgrimson
+* @version 1.0
+*
+*
+*
+*
+*/
+
+
+
 package Guess;
 
 import java.util.Random;
@@ -5,8 +33,8 @@ import java.util.Scanner;
 
 
 
-public class GuessNumber {
-	
+public class GuessNumber 
+{
 	// class constants
 	private final static int MAX = 35;
 	private final static int MIN = 25;
@@ -20,20 +48,37 @@ public class GuessNumber {
 		System.out.println("Guess the correct number to win...");
 		System.out.println("**************************************");
 		game(input);
-	} // end of main()
+} // end of main()
 	
 	
+	
+	/**
+	* This creates a random number which can be called
+	* and set to a variable
+	*
+	*/
+	
+
 	// creates a random number in a range specified by MAX and MIN
-	public static int random(){
+	public static int random()
+	{
 		
 		Random rand = new Random();
 		int randNum = rand.nextInt((MAX - MIN) + 1) + MIN;
 		return randNum;
 	}
 	
-	
+	/**
+	*
+	* This presents the statitics of the games 
+	* played in one session
+	*
+	*
+	*/
+
 	// show stats of all games played
-	public static void stats(int a, int b, int c){
+	public static void stats(int a, int b, int c)
+	{
 		double average = b/a;
 		System.out.println("Game statistics");
 		System.out.println("Total guesses: " + b);
@@ -43,9 +88,15 @@ public class GuessNumber {
 	}
 	
 	
-	public static void game(Scanner input){
-		
-
+	/**
+	* This plays the main game using while loops
+	*
+	*
+	* @param input take the scanners input
+	*/
+	
+	public static void game(Scanner input)
+	{
 		boolean isActive = true; // Is the game active? 
 		boolean isUserInputActive = true; // Is the user allowed to input a number?
 		int totalGuesses = 0; //  Holds a value for all guesses in every game played
@@ -63,7 +114,8 @@ public class GuessNumber {
 			
 			totalGames++; //increase amount of games played
 			
-			while(isUserInputActive){
+			while(isUserInputActive)
+			{
 				
 				System.out.println("I'm thinking of a number between 25 and 35...");
 				System.out.println(randomNum); // debug purposes only
@@ -78,13 +130,18 @@ public class GuessNumber {
 				
 				
 				//check if the guess needs to be higher or lower or has the correct value
-				if (guess < randomNum){
+				if (guess < randomNum)
+				{
 					System.out.println("The number is higher...");
 					guesses++; // increase the amount of guesses tried
-				} else if (guess > randomNum) {
+				} 
+				else if (guess > randomNum) 
+				{
 					System.out.println("The number is lower...");
 					guesses++; // increase the amount of guesses tried
-				} else if (guess == randomNum){
+				} 
+				else if (guess == randomNum)
+				{
 					guesses++;
 					System.out.println("You guessed correctly in: " + guesses  + " guesses" );
 					isUserInputActive = false;
@@ -96,19 +153,19 @@ public class GuessNumber {
 				
 				// if guess reach 0 stop the game
 				
-				if (guessAmount == 0){
+				if (guessAmount == 0)
+				{
 					System.out.println("Sorry, you lost this time!");
 					isUserInputActive = false;
 				}
 				
-				
-				
 			}
 			
 			
-			if (guesses == 1){
-				bestScore = guesses;
-			} else if (guesses <)
+			if (guesses < bestScore)
+			{
+			bestScore = guesses;
+			}
 			
 			
 			
@@ -116,8 +173,7 @@ public class GuessNumber {
 			
 			
 			totalGuesses += guesses; // add up total guesses for each game
-			
-
+		
 			System.out.println("Do you want to play again?");
 			
 			String playAgain = input.next();
@@ -134,5 +190,9 @@ public class GuessNumber {
 		}
 		
 	} // end of game()
+	
+	
+	
+	
 
 }
