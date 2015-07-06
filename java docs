@@ -1,0 +1,109 @@
+package examples;
+/*
+ * Evan Torgrimson
+ * 06/24/15
+ * Apples.java
+ * This class represents apples.  you can set their color, weight, ect..
+ * 
+ */
+
+/**
+ * This class can be used to make an apple object,
+ * which has a color, weight, and worm flag.
+ *
+ *
+ *
+ * @author evan torgrimson
+ * @version 1.0
+ * 
+ *
+ *
+ */
+public class Apples {
+
+	//attributes 
+	private String color;
+	private boolean hasWorm;
+	private double weight;  // pounds
+	
+	
+	
+	//constructor
+	/**
+	 * This creates an apple with the given attributes 
+	 * 
+	 * @param color the new apple color
+	 * @param hasWorm does the apple have a worm or not?
+	 * @param weight the weight of the apple in pounds
+	 */
+	public Apples(String color, boolean hasWorm, double weight) {
+		
+		this.color = color;
+		this.hasWorm = hasWorm;
+		this.weight = weight;
+	}
+	
+	/**
+	 * This creates a new apple with the color given.
+	 * 
+	 * @param color the new apple color
+	 */
+	public Apples(String color) {
+		
+		// we only have some of the data for our fields
+		this(color, false, 0.1);
+		
+		
+		/*  this is redundant!
+		this.color = color;
+		hasWorm = false; //this is the default anyways
+		weight = 0.1; // assumption of weight
+		*/
+	}
+	
+	/**
+	 * This is my default constructor.  This creates
+	 * a generic red apple
+	 * 
+	 */
+	
+	public Apples(){
+		
+		//pick some default values for a generic apple
+		this("red", false, 0.1);
+		/*
+		color = "red";
+		hasWorm = false; //this is the default anyways
+		weight = 0.1; // assumption of weight
+		*/
+		
+	}
+	
+	
+	
+	
+	// getters and setters
+	
+	/**
+	 * This is a getter for color attribute.
+	 * 
+	 * @return the apple's color
+	 */
+	
+	public String getColor() {
+		return color;
+	}
+	
+	/**
+	 * This is a setter for our apple's color.
+	 * 
+	 * @param color the new apple color
+	 */
+	
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+	
+	
+}
