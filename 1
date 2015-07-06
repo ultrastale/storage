@@ -1,0 +1,138 @@
+package Guess;
+
+import java.util.Random;
+import java.util.Scanner;
+
+
+
+public class GuessNumber {
+	
+	// class constants
+	private final static int MAX = 35;
+	private final static int MIN = 25;
+
+	
+	public static void main(String[] args){
+		
+		Scanner input = new Scanner(System.in);
+		System.out.println("**************************************");
+		System.out.println("You are going to play a guessing game!");
+		System.out.println("Guess the correct number to win...");
+		System.out.println("**************************************");
+		game(input);
+	} // end of main()
+	
+	
+	// creates a random number in a range specified by MAX and MIN
+	public static int random(){
+		
+		Random rand = new Random();
+		int randNum = rand.nextInt((MAX - MIN) + 1) + MIN;
+		return randNum;
+	}
+	
+	
+	// show stats of all games played
+	public static void stats(int a, int b, int c){
+		double average = b/a;
+		System.out.println("Game statistics");
+		System.out.println("Total guesses: " + b);
+		System.out.println("Total games: " + a);
+		System.out.printf("Average guesses per game : %.1f", average);
+		System.out.println();
+	}
+	
+	
+	public static void game(Scanner input){
+		
+
+		boolean isActive = true; // Is the game active? 
+		boolean isUserInputActive = true; // Is the user allowed to input a number?
+		int totalGuesses = 0; //  Holds a value for all guesses in every game played
+		int totalGames = 0; // Holds a value for each game played
+		int bestScore = 0;
+		
+		
+		// start of game loop
+		while(isActive){
+			
+			int guessAmount = 5; // Default number of guesses per game
+			int guesses = 0; // Holds how many guesses are made
+			int randomNum = random(); //create random number
+			
+			
+			totalGames++; //increase amount of games played
+			
+			while(isUserInputActive){
+				
+				System.out.println("I'm thinking of a number between 25 and 35...");
+				System.out.println(randomNum); // debug purposes only
+				
+				
+				System.out.println("Guesses left: " + guessAmount);
+				System.out.print("What is your guess?: ");
+				int guess = input.nextInt();
+				
+				
+				guessAmount--; // decrease amount of total guesses usable
+				
+				
+				//check if the guess needs to be higher or lower or has the correct value
+				if (guess < randomNum){
+					System.out.println("The number is higher...");
+					guesses++; // increase the amount of guesses tried
+				} else if (guess > randomNum) {
+					System.out.println("The number is lower...");
+					guesses++; // increase the amount of guesses tried
+				} else if (guess == randomNum){
+					guesses++;
+					System.out.println("You guessed correctly in: " + guesses  + " guesses" );
+					isUserInputActive = false;
+				}
+				
+				System.out.println("********");
+				System.out.println("********");
+				System.out.println("********");
+				
+				// if guess reach 0 stop the game
+				
+				if (guessAmount == 0){
+					System.out.println("Sorry, you lost this time!");
+					isUserInputActive = false;
+				}
+				
+				
+				
+			}
+			
+			
+			if (guesses == 1){
+				bestScore = guesses;
+			} else if (guesses <)
+			
+			
+			
+			
+			
+			
+			totalGuesses += guesses; // add up total guesses for each game
+			
+
+			System.out.println("Do you want to play again?");
+			
+			String playAgain = input.next();
+			playAgain = playAgain.toLowerCase();
+			if(playAgain.startsWith("n")){
+				isActive = false;
+				isUserInputActive = false; //make user input accessible
+				stats(totalGames, totalGuesses, bestScore);	
+			} else{
+				isActive = true;
+				isUserInputActive = true;
+			}
+			
+		}
+		
+	} // end of game()
+
+}
